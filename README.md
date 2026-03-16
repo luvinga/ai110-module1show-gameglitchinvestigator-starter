@@ -25,14 +25,26 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+1. Game Purpose:
+The game challenges the player to guess a secret number within a limited number of attempts. Hints indicate whether the guess is too high or too low. The score updates based on attempts and correctness.
+
+2. Bugs Found:
+- check_guess() returned a tuple instead of a single outcome, causing test failures
+- The secret number changed unexpectedly because it was sometimes converted to a string and Streamlit reruns reset it
+- Hints were inconsistent with the actual logic
+
+3. Fixes Applied:
+- Modified check_guess() to return only "Win", "Too High", or "Too Low"
+- Moved all game state variables (secret number, attempts, score, history) into st.session_state
+- Kept the secret number as an integer at all times
+- Refactored game logic into logic_utils.py
+- Verified fixes manually in Streamlit and with pytest
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![winning gamet](image-1.png)
+![Pytest Results Screenshot](image.png)
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+- Optional UI improvements, additional scoring tweaks, or custom messages can be documented here with screenshots
